@@ -26,8 +26,8 @@ while IFS= read -r line || [ -n "$line" ]; do
   esac
 done < "$file"
 
-required="SFW_VERSION"
-for tool in ACTIONLINT ZIZMOR; do
+required=""
+for tool in ACTIONLINT ZIZMOR SFW; do
   required="$required ${tool}_VERSION ${tool}_SHA256_LINUX_X64 ${tool}_SHA256_DARWIN_ARM64"
 done
 for key in $required; do
