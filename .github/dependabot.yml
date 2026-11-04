@@ -1,0 +1,14 @@
+# One grouped pull request a month that moves every action pin to its new commit and version comment. The cooldown
+# skips a release younger than 5 days, as npm installs do (min-release-age=5).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 5
+    groups:
+      github-actions:
+        patterns:
+          - "*"

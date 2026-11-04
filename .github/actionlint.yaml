@@ -1,0 +1,11 @@
+# QUIRK(actionlint): 1.7.12 predates two forms GitHub documents. One is the job context's workflow_repository and
+# workflow_sha (https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#job-context). The other is
+# the self-repository `uses: $/…` (https://github.blog/changelog/2026-07-30-reference-same-repository-actions-with-self-repository-syntax/),
+# which, unlike `./…`, a commit-pinning policy accepts.
+paths:
+  .github/workflows/checks.yml:
+    ignore:
+      - 'property "workflow_(repository|sha)" is not defined in object type'
+  .github/workflows/ci.yml:
+    ignore:
+      - 'reusable workflow call "\$/\.github/workflows/checks\.yml" at "uses" is not following the format'

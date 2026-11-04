@@ -1,0 +1,23 @@
+name: CI
+
+# This repository runs its own shared checks on itself, so actionlint and zizmor lint checks.yml before a caller pins it.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    uses: $/.github/workflows/checks.yml
+    with:
+      toolchain: none
+      check-cmd: bash tools/check-versions.sh
+      public: true

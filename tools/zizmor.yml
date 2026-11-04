@@ -1,0 +1,6 @@
+# zizmor configuration for every repository that calls .github/workflows/checks.yml, passed with --config.
+rules:
+  dependabot-cooldown:
+    config:
+      # WHY: npm installs take only releases at least 5 days old (min-release-age=5), and Dependabot waits as long.
+      days: 5
